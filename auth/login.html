@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/custom-label.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <script src="auth.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="header-container">
+        <a class="hidden-a" href="index.html">
+            <h1>Shopi</h1>
+        </a>
+        <div>
+            <a href="signup.html" class="outlined-button">Register</a>
+        </div>
+    </div>
+    <div class="login-widget" style="display: grid; margin: auto; margin-top: 8%;">
+        <h2>Login</h2>
+        <div style="display: flex; flex-direction: column;">
+            <input id="txt_username" class="text-field" type="text" placeholder="Username">
+            <input id="txt_password" class="text-field" type="password" placeholder="Password">
+            <div class="checkbox-wrapper-4">
+                <input class="inp-cbx" id="morning" type="checkbox" />
+                <label class="cbx" for="morning"><span>
+                        <svg width="12px" height="10px">
+                            <use xlink:href="#check-4"></use>
+                        </svg></span><span>Remember me</span></label>
+                <svg class="inline-svg">
+                    <symbol id="check-4" viewbox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </symbol>
+                </svg>
+            </div>
+            <div style="height: 20px;"></div>
+            <button class="filled-button" onclick="login()">Login</button>
+        </div>
+    </div>
+    <div id="toast">
+        <div class="checkicon"> <i class="fas fa-check-square"></i> </div>
+        SUCCESS: We have received your registration. Thanks!
+    </div>
+</body>
+
+</html>
