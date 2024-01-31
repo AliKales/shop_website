@@ -3,7 +3,7 @@ function login() {
     const password = document.getElementById("txt_password").value
 
 
-    fetch("http://localhost:3000/api/login", {
+    fetch("http://localhost:8080/api/login", {
         method: "POST",
         body: JSON.stringify({
             username: username,
@@ -13,13 +13,13 @@ function login() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response.json())
-        .then((json) => handle_login(json, username));
+        .then((response) => response.json().then((body => handle_login(response.ok, body, username))))
 }
 
-function handle_login(json, username) {
-    if (!json.result) {
-        toastFunction(json.message ?? "Unexpected error!")
+function handle_login(ok, json, username) {
+    console.log(json);
+    if (!ok) {
+        toastFunction(json.message ?? "Unexpected Error!")
         return
     }
     localStorage.setItem("token_info", json.data)
@@ -37,7 +37,7 @@ function register() {
         return
     }
 
-    fetch("http://localhost:3000/api/signup", {
+    fetch("http://localhost:8080/api/signup", {
         method: "POST",
         body: JSON.stringify({
             email: email,
@@ -48,12 +48,11 @@ function register() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response.json())
-        .then((json) => handle_register(json, username));
+        .then((response) => response.json().then((body => handle_login(response.ok, body, username))))
 }
 
-function handle_register(json, username) {
-    if (!json.result) {
+function handle_register(ok, json, username) {
+    if (!ok) {
         toastFunction(json.message ?? "Unexpected error!")
         return
     }
