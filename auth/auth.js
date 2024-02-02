@@ -48,16 +48,57 @@ function register() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response.json().then((body => handle_login(response.ok, body, username))))
+        .then((response) => response.json().then((body => handleRegister(response.ok, body, username))))
 }
 
-function handle_register(ok, json, username) {
+function handleRegister(ok, json, username) {
     if (!ok) {
         toastFunction(json.message ?? "Unexpected error!")
         return
     }
     localStorage.setItem("token_info", json.data)
     window.location = "/user/" + username
+}
+
+async function getAuthToken() {
+    const data = localStorage.getItem("token_info")
+
+    if (!data || !data.token || !data.tokenExpireAt) {
+        return null
+    }
+
+    const tokenExpireAt = Date(data.tokenExpireAt)
+    const now = new Date()
+
+    if (now < tokenExpireAt) {
+        return data.token
+    }
+
+    if (!data.refreshTokenExpireAt) {
+        return null
+    }
+
+    const refreshTokenExpireAt = Date(data.refreshTokenExpireAt)
+
+    if (now > refreshTokenExpireAt) {
+        return null
+    }
+
+    const response = await fetch("http://localhost:8080/api/refresh-token", {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${data.refreshToken}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        return null
+    }
+
+    const json = await response.json();
+    localStorage.setItem("token_info", json)
+    return json.token
 }
 
 function toastFunction(message) {

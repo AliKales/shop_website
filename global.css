@@ -41,7 +41,6 @@ body {
     justify-content: space-between;
     padding-inline: 20px;
     background-color: white;
-    /* Optional: Add background color to the container */
 }
 
 .login-widget {
@@ -58,4 +57,24 @@ body {
     padding-left: 10px;
     padding-block: 10px;
     margin-block: 5px;
+}
+
+.divider {
+    margin: 20px 0;
+    border-top: 1px solid #959595;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    /* Firefox */
+    appearance: textfield;
+    /* Remove increment/decrement controls in Chrome, Safari, and Edge */
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    /* Remove increment/decrement controls in WebKit browsers */
+    margin: 0;
+    /* Remove inner spacing in WebKit browsers */
 }

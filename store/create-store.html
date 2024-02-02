@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <title>Create Store</title>
+</head>
+
+<body>
+    <div class="header-container">
+        <a class="hidden-a" href="">
+            <h1>Create Store</h1>
+        </a>
+    </div>
+    <div class="login-widget" style="display: grid; margin: auto; margin-top: 7%;">
+        <h2>Your Store</h2>
+        <div style="display: flex; flex-direction: column;">
+            <input id="txt_name" class="text-field" type="text" placeholder="Name">
+            <input id="txt_link" class="text-field" type="email" value="shopi.com/" pattern="^shopi\.com\/[a-z\-]*$">
+            <div style="height: 20px;"></div>
+            <button class="filled-button" onclick="createStore()">Create</button>
+        </div>
+    </div>
+    <div id="toast">
+        <div class="checkicon"> <i class="fas fa-check-square"></i> </div>
+
+    </div>
+    <script src="create-store.js"></script>
+    <script src="../auth/auth.js"></script>
+</body>
+
+</html>

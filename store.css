@@ -1,0 +1,55 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item {
+    box-sizing: border-box;
+    width: 30%;
+    /* Adjust width for three items in a row */
+    margin-bottom: 20px;
+    /* Adjust margin to create spacing between items */
+    padding: 10px;
+    text-align: center;
+    /* Center text */
+}
+
+@media screen and (max-width: 768px) {
+    .item {
+        width: 48%;
+        /* Two items in a row for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .item {
+        width: 100%;
+        /* Single item in a row for even smaller screens */
+    }
+}
+
+/* Add additional styling as needed */
+.item img {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 10 / 10;
+    /* Aspect ratio of 1.7 */
+}
+
+.item h3,
+.item p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.item h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+    /* Adjust font size as needed */
+}
