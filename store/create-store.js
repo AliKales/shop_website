@@ -23,14 +23,14 @@ async function createStore() {
         toastFunction("Please fill up!")
     }
 
-    const token = await tokenCheck()
+    const token = await getAuthToken()
 
     if (!token) {
-        window.location.href = "/"
+        window.location.href = "/auth/login.html"
         return
     }
 
-    const response = await fetch("http://localhost:8080/api/create-store", {
+    const response = await fetch("https://go-shopi.onrender.com/api/create-store", {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,

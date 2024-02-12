@@ -10,7 +10,7 @@ function init() {
         return
     }
 
-    fetch("http://localhost:8080/api/user/" + username, {
+    fetch("https://go-shopi.onrender.com/api/user/" + username, {
         method: "GET",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
