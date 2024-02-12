@@ -31,3 +31,5 @@ function handle(status, body) {
         window.location.href = "/login.html"
     }, 1500);
 }
+
+verify()
